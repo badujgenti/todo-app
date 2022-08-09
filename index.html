@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <link rel="stylesheet" href="main.css">
   <title>Frontend Mentor | Todo app</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -15,22 +15,126 @@
   </style>
 </head>
 <body>
+  <div class="full-box">
+<div class="todo-and-moon">
+  <span> TODO </span>
+  <div  class="tgl-btn"></div>
 
-  Todo
+</div>
+<div class="type-todo">
+  <div id="circle"></div>
+    <input type="text" id="todo-input"  placeholder="Create a new todo...">
+</div>
 
-  <!-- Add dynamic number --> items left
+<ul id="tasks">
 
-  All
-  Active 
-  Completed
+</ul>
+  <!-- Add dynamic number --> items left 
+<div class="filter">
 
-  Clear Completed
+
+  <a href="#">  All </a>
+  <a href="#">  Active </a>
+  <a href="#">  Completed </a>
+</div>
+  
 
   Drag and drop to reorder list
-
+</div>
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div>
+  <script src="main.js"></script>
+  <script>
+    const tasks =[
+      {
+        name : "Task 0",
+        active: true ,
+      },
+      {
+        name : "Task 1",
+        active:false ,
+      },
+      {
+        name : "Task 2",
+        active: true ,
+      }
+    ];
+      const setup = (tasks, rootElementId ) => {
+
+      
+    let taskListHtml = "";
+    for (let i =0; i < tasks.length; i++){
+      let task = tasks[i];
+      taskListHtml = taskListHtml + `<li class="task" ">
+          <input id="task-${i}" onclick="check(this)" type="checkbox" name="completed" ${!task.active ? "" : "checked" } >
+          <label for="task-${i}" class="task-text ${!task.active ? "" : "task-text-modifier" } "data-id=${i}" > ${task.name}</label> 
+          <button class="delete-task" onclick="deleteIt(event)" > X </button>
+        </li>`
+    }
+    document.getElementById(rootElementId).innerHTML = taskListHtml;
+  }
+ 
+  function check (element) {
+   
+     const dataId = parseInt(element.nextElementSibling.getAttribute("data-id"));
+      if (tasks[dataId].active ){
+        tasks[dataId].active = false;
+       element.nextElementSibling.classList.remove("task-text-modifier");
+        
+      }else{
+        tasks[dataId].active = true;
+        element.nextElementSibling.classList.add("task-text-modifier");
+       
+      };
+    }
+     
+    //  const taskListElement = document.getElementById('tasks');
+    //   const deleteButtons =Array.from(taskListElement.querySelectorAll(".delete-task"));
+    //   deleteButtons.map((deleteButton) =>{
+    //   deleteButton.addEventListener("click", (event) =>{
+    //     deleteButton.parentNode.remove();
+    //   })
+    // })
+    function deleteButton (){
+      const deletion = document.querySelectorAll(".delete-task")
+    
+    
+  }
+
+    function deleteIt(event){
+      const deletion = document.querySelectorAll(".delete-task")
+      for(let i=0; i<deletion.length; i++){
+      deletion[i].onclick=(event) => {  
+        event.target.parentElement.style.display = "none";
+        tasks.splice(i , 1);
+      }
+      }
+    }
+  
+  
+  
+  
+    let addTask = document.getElementById("todo-input");
+    addTask.addEventListener("keypress", (event)=>{
+      if (event.key === "Enter"){
+        tasks.unshift({
+          name: addTask.value,
+          active: false ,
+
+        });
+          deleteButton ();
+        addTask.value= "";
+        
+      };
+
+      setup(tasks, "tasks");
+      
+    })
+
+  
+    
+  </script>
 </body>
 </html>
