@@ -2,8 +2,12 @@
 //     document.body.classList.toggle("dark");    
 // }
 
-
+const itemsNumber = document.getElementById("items")
 let  sunButton = document.querySelector(".tgl-btn")
+
+
+itemsNumber.innerHTML = `${tasks.length} items left`;
+
 
 sunButton.addEventListener("click", () => {
     document.body.classList.toggle("dark");  
@@ -16,6 +20,15 @@ sunButton.addEventListener("click", () => {
         }
     });
 });
+
+let clearCompleted = document.getElementById("clear");
+clearCompleted.addEventListener("click", ()=>{
+    let falseTask = tasks.filter((taskListElements)=> !taskListElements.active )
+    tasks = [...falseTask]
+    setup(tasks, "tasks");
+})
+
+
 
 // const taskListElement = document.getElementById('tasks');
 // const deleteButtons =Array.from(taskListElement.querySelectorAll(".delete-task"));
@@ -37,3 +50,5 @@ sunButton.addEventListener("click", () => {
 
 
 
+
+        
