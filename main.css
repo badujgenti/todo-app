@@ -21,6 +21,10 @@ body{
 }
 .full-box{
     padding: 48px 24px 72px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 span{
     font-family: 'Josefin Sans', sans-serif;
@@ -35,6 +39,7 @@ span{
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    gap:175px;
 
 }
 .type-todo{
@@ -51,13 +56,7 @@ span{
     
 
 }
-.circle{
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 1px solid rgba(227, 228, 241, 1);
-    margin-left: 20px;
-}
+
 #todo-input{
     background: transparent;
     width: 83%;
@@ -116,6 +115,7 @@ span{
     font-size: 16px;
     font-weight: 400;
     margin-left: auto;
+    cursor: pointer;
 }
 .filter{
     margin-top: 40px;
@@ -142,6 +142,7 @@ span{
     letter-spacing: -0.1666666716337204px;
     text-align: left;
     margin-left: 10px;
+    cursor: pointer;
 
 }
 .task-text-modifier{
@@ -218,6 +219,8 @@ a {
     justify-content: center;
     align-items: center;
     content: "f00c ";
+    cursor: pointer;
+    
     
   
     
@@ -229,7 +232,51 @@ a {
     width: 20px;
     border-radius: 50%;
     border: 1px solid  rgba(57, 58, 75, 1);
-    ;
+    cursor: pointer;
+    
+ }
+ input[type="checkbox"]:hover{
+    border: 1px solid   #C058F3;
+ }
+ .blue{
+    color: rgba(58, 124, 253, 1);
+
+ }
+ .drag{
+    font-family: 'Josefin Sans',sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: -0.1944444477558136px;
+    text-align: center;
+    margin-top: 40px;
+
+ }
+
+ @media only screen and (min-width:1024px){
+    body{
+        background-image: url(/images/bg-desktop-light.jpg);
+    }
+    .dark{
+        background-image: url(/images/bg-desktop-dark.jpg);
+    }
+    .type-todo{
+        height: 64px;
+        width: 540px;
+        border-radius: 5px;
+        
+    }
+    .task{
+        height: 64px;
+        width: 540px;
+    }
+    #filter{
+        height: 64px;
+        width: 540px;
+    }
+    .todo-and-moon{
+        gap: 380px;;
+    }
  }
 
  

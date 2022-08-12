@@ -23,7 +23,11 @@
 
 </div>
 <div class="type-todo">
-  <div id="circle"></div>
+  <div id="circle" style="width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid gray;
+  margin-left: 20px; "></div>
     <input type="text" id="todo-input"  placeholder="Create a new todo...">
 </div>
 
@@ -37,13 +41,13 @@
 <div class="task"  id="filter">
 
 
-  <a  class="task-text "  data-action="all" href="#">  All </a>
+  <a  class="task-text blue"  data-action="all" href="#">  All </a>
   <a class="task-text" data-action="active" href="#">  Active </a>
   <a class="task-text" data-action="completed" href="#">  Completed </a>
 </div>
   
 
-  Drag and drop to reorder list
+  <p class="drag"> Drag and drop to reorder list</p>
 </div>
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
